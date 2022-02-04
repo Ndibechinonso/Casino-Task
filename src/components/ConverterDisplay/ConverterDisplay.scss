@@ -1,0 +1,40 @@
+@mixin flex($display, $direction, $justify) {
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $justify;
+}
+.close-btn{
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.convertion-column{
+    @include flex(flex, row, space-between);
+    border-bottom: 1px solid;
+    border-bottom-color: #ffffff;
+    gap: 20px;
+    z-index: 10000 !important;
+    padding-bottom: 20px;
+    .left-table{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        .currency-div{
+            @include flex(flex, column, space-between);
+            .currency-price{
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+            }
+        }
+    }
+    img{
+        width: 100%;
+        object-fit: contain;
+    }
+    span{
+        color: #9484a4;
+        align-self: center;
+    }
+}
