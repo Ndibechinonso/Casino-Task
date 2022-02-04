@@ -19,11 +19,11 @@ const ConverterDisplay = ({ currency }: any) => {
 
   const deleteItem = (index: any) => {
     if (index > -1) {
-      setCurrencyArray(currencyArray.splice(index, 1))
-      // setCurrencyArray(currencyArray);
+      setCurrencyArray(currencyArray => currencyArray.splice(index, 1))
       setUpdateQuery(false);
     }
   };
+
 
   const EXCHANGE_RATES = gql`
     query price {
@@ -54,7 +54,7 @@ const ConverterDisplay = ({ currency }: any) => {
         );
         if (!existingCurrency && updateQuery) {
           currencyArray.push(priceObject);
-          setCurrencyArray(currencyArray);
+          setCurrencyArray(currencyArray => currencyArray);
           setUpdateQuery(false);
         }
       }
