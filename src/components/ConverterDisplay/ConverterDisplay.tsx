@@ -18,14 +18,8 @@ const ConverterDisplay = ({ currency }: any) => {
 
 
   const deleteItem = (index: any, currency: any) => {
-    console.log(currencyArray[index], 'ind');
-    console.log(currency, 'currency');
-
-    
     if (index > -1) {
-      // setCurrencyArray(currencyArray => currencyArray.splice(index, 1))
       var number = currencyArray.filter((value, i) => value !== currency)
-      console.log(number, 'number');
       setCurrencyArray(currencyArray => number)
       setUpdateQuery(false);
     }
@@ -56,7 +50,7 @@ const ConverterDisplay = ({ currency }: any) => {
 
         var priceObject = { price: price, id: marketSymbol };
 
-        const existingCurrency = currencyArray.find(
+        const existingCurrency = currencyArray.find(          
           (element) => element.id === marketSymbol
         );
         if (!existingCurrency && updateQuery) {
