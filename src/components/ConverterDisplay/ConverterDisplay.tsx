@@ -17,9 +17,16 @@ const ConverterDisplay = ({ currency }: any) => {
   }, [currency]);
 
 
-  const deleteItem = (index: any) => {
+  const deleteItem = (index: any, currency: any) => {
+    console.log(currencyArray[index], 'ind');
+    console.log(currency, 'currency');
+
+    
     if (index > -1) {
-      setCurrencyArray(currencyArray => currencyArray.splice(index, 1))
+      // setCurrencyArray(currencyArray => currencyArray.splice(index, 1))
+      var number = currencyArray.filter((value, i) => value !== currency)
+      console.log(number, 'number');
+      setCurrencyArray(currencyArray => number)
       setUpdateQuery(false);
     }
   };
@@ -76,7 +83,7 @@ const ConverterDisplay = ({ currency }: any) => {
                     </p>
                   </div>
                 </div>
-                <span className="close-btn" onClick={() => deleteItem(index)}>
+                <span className="close-btn" onClick={() => deleteItem(index, currency)}>
                   x
                 </span>
               </div>
