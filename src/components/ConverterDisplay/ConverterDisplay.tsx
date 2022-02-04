@@ -16,6 +16,15 @@ const ConverterDisplay = ({ currency }: any) => {
     setUpdateQuery(true);
   }, [currency]);
 
+
+  const deleteItem = (index: any) => {
+    if (index > -1) {
+      currencyArray.splice(index, 1);
+      setCurrencyArray(currencyArray);
+      setUpdateQuery(false);
+    }
+  };
+  
   const EXCHANGE_RATES = gql`
     query price {
       markets(filter:{ baseSymbol: {_eq:"${currency}" } quoteSymbol: {_eq:"EUR"}}) {
@@ -52,13 +61,6 @@ const ConverterDisplay = ({ currency }: any) => {
     });
   }
 
-  const deleteItem = (index: any) => {
-    if (index > -1) {
-      currencyArray.splice(index, 1);
-      setCurrencyArray(currencyArray);
-      setUpdateQuery(false);
-    }
-  };
   return (
     <>
       {currencyArray.length > 0
